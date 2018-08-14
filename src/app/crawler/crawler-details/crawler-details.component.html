@@ -1,0 +1,50 @@
+<div class="col-md-8">
+<form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="lastestrun"> <strong>Latest Run: </strong></label>
+    <input type="text"
+           readonly class="form-control-plaintext"
+           id="lastestrun"
+           formControlName="lastestrun">
+  </div>
+
+  <div class="form-group">
+    <label for="previousruns"><strong>Previous Run: </strong></label>
+    <ul formControlName="previousruns" id="previousruns">
+      <li *ngFor="let previousrun of crawler.previousRuns; let i=index">{{ previousrun?.date }}</li>
+    </ul>
+  </div>
+
+  <div>
+    <fieldset class="scheduler-border" formGroupName="compareruns">
+      <legend class="scheduler-border">Compare Runs</legend>
+      <div class="control-group">
+        <label class="control-label input-label" for="startTime">From :</label>
+        <select name="starttime"
+                class="form-control"
+                id="startTime"
+                formControlName="starttime">
+          <option value="" disabled selected>Select a Run</option>
+          <option *ngFor="let previousrun of crawler.previousRuns; let i=index" [value]="i"> {{ previousrun?.date }}</option>
+        </select>
+        <label class="control-label input-label" for="endTime">To :</label>
+        <select name="endtime"
+                class="form-control"
+                id="endTime"
+                formControlName="endtime">
+          <option value="" disabled selected>Select a Run</option>
+          <option *ngFor="let previousrun of crawler.previousRuns; let i=index" [value]="i"> {{ previousrun?.date }}</option>
+        </select>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+
+</form>
+</div>
+
+

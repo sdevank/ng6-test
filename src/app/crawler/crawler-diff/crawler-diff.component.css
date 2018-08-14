@@ -1,0 +1,14 @@
+.header_prod {
+  border-top:1px solid #c00;
+  border-bottom:1px solid #c00;
+}
+.header_test {
+  border-top:1px solid #009999;
+  border-bottom:1px solid #009999;
+}
+.envTxt_prod {
+  color: #c00;
+}
+.envTxt_test {
+  color: #009999;
+}
